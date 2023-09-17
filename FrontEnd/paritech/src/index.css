@@ -32,3 +32,51 @@ body {
 .product-card:hover .overlay{
     height: 50px;
 }
+
+.sec_title{
+  position: relative;
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+  padding: 10px 0;
+}
+
+.sec_title::before{
+  content: "";
+  background-color: #eb1b3e;
+  width: 100px;
+  height: 3px;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%, -100%);
+}
+
+.sale_title{
+  position: relative;
+  font-size: 1.3rem;
+  font-weight: bold;
+  padding: 10px 0;
+}
+
+.sale_title::before{
+  content: "";
+  background-color: #eb1b3e;
+  width: 60px;
+  height: 3px;
+  position: absolute;
+  top: 100%;
+  left: 0%;
+  transform: translate(0%, -100%);
+}
+
+.limited_splide{
+  max-height: 100%;
+  overflow: hidden;
+}
+
+.limited_splide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}

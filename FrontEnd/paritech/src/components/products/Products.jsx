@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { ProductContext } from "../../Context/Context";
+import Product from "./Product";
 
 const Products = () => {
   const {
@@ -9,7 +10,8 @@ const Products = () => {
     updateCategories,
     allProducts,
     updateAllProducts,
-    loading, updateLoading
+    loading,
+    updateLoading,
   } = useContext(ProductContext);
 
   const [activeCate, setActiveCate] = useState("all");
@@ -29,7 +31,7 @@ const Products = () => {
     const data = await response.json();
     updateProducts(data);
     updateAllProducts(data);
-    updateLoading(false)
+    updateLoading(false);
     const allCat = ["all", ...new Set(data.map((ele) => ele.categories))];
     updateCategories(allCat);
   };
@@ -42,14 +44,16 @@ const Products = () => {
     }
   }, []);
 
-
-  if(loading){
-    return <h1>Loading.....</h1>
+  if (loading) {
+    return <h1 className="text-center text-[1.5rem] font-semibold">Loading.....</h1>;
   }
 
   if (products) {
     return (
       <section>
+        <h1 className='sec_title'>
+          Trending Items
+        </h1>
         <ul className="flex justify-center my-[30px] gap-[10px] md:gap-[20px] text-xs md:text-base">
           {categories.map((cate, index) => {
             return (
@@ -69,34 +73,7 @@ const Products = () => {
         <div className="prod_grid px-[15px] grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-[20px]">
           {products.map((prod, index) => {
             return (
-              <article
-                key={index}
-                className="product-card md:max-h-[400px] relative shadow-md shadow-gray-500 cursor-pointer"
-              >
-                <img
-                  className="w-full object-cover h-[80%]"
-                  src={prod.image}
-                  alt={prod.name}
-                />
-                <div className="flex flex-col gap-[10px] p-[15px]">
-                  <p className="font-medium">{prod.name}</p>
-                  <p>${prod.price}</p>
-                </div>
-
-                <div className="overlay text-white bg-gray-400 flex items-center justify-between px-[20px]">
-                  <p className="uppercase text-sm lg:text-base font-medium">
-                    add to cart
-                  </p>
-                  <div className="flex gap-[20px]">
-                    <p className="cursor-pointer ">
-                      <i className="fa-regular fa-eye"></i>
-                    </p>
-                    <p className="cursor-pointer">
-                      <i className="fa-solid fa-chart-simple"></i>
-                    </p>
-                  </div>
-                </div>
-              </article>
+             <Product key={index} prod={prod}/>
             );
           })}
         </div>
