@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { ProductContext } from "../../Context/Context";
 import Product from "./Product";
+import Loader from "../Loader";
 
 const Products = () => {
   const {
@@ -45,15 +46,19 @@ const Products = () => {
   }, []);
 
   if (loading) {
-    return <h1 className="text-center text-[1.5rem] font-semibold">Loading.....</h1>;
+    return (
+      <section className="min-h-[50vh] flex items-center justify-center">
+        <h1 className="text-center text-[1.5rem] font-semibold">
+          <Loader />
+        </h1>
+      </section>
+    );
   }
 
   if (products) {
     return (
       <section>
-        <h1 className='sec_title'>
-          Trending Items
-        </h1>
+        <h1 className="sec_title">Trending Items</h1>
         <ul className="flex justify-center my-[30px] gap-[10px] md:gap-[20px] text-xs md:text-base">
           {categories.map((cate, index) => {
             return (
@@ -72,9 +77,7 @@ const Products = () => {
 
         <div className="prod_grid px-[15px] grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-[20px]">
           {products.map((prod, index) => {
-            return (
-             <Product key={index} prod={prod}/>
-            );
+            return <Product key={index} prod={prod} />;
           })}
         </div>
       </section>

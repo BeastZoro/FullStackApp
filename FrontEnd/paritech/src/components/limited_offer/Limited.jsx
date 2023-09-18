@@ -24,7 +24,7 @@ const Limited = () => {
   };
   return (
     <section className="mx-auto max-w-[1200px] flex-col md:flex md:flex-row items-center justify-center">
-      <article className="md:w-[50%] relative flex overflow-hidden h-[550px] border-2 border-black">
+      <article className="md:w-[50%] relative flex overflow-hidden h-[550px]">
 
             <img
               src={offerImages[Slideindex]}
@@ -125,3 +125,4 @@ const CountDown = ({ OfferTime }) => {
     </article>
   );
 };
+

@@ -22,7 +22,7 @@ const Footer = () => {
   return (
     <footer className="bg-gray-900 text-white py-[30px]">
       <div className="foot_wrapper flex flex-wrap justify-around items-center">
-        <div class="foot_head my-[20px]">
+        <div class="foot_head my-[20px] px-[20px] md:px-0">
           <div class="logo_wrapper w-[300px]">
             <img
               src={footLogo}
@@ -30,7 +30,7 @@ const Footer = () => {
               className="w-full object-cover"
             />
           </div>
-          <p className="max-w-[500px] lg:max-w-[300px] text-[.9rem] my-[10px]">
+          <p className="max-w-[400px] lg:max-w-[300px] text-[.9rem] my-[10px]">
             Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellat
             molestias doloremque magni repudiandae veritatis magnam eveniet
             nobis quo facere atque
@@ -39,7 +39,7 @@ const Footer = () => {
           <h3 className="text-[1.3rem] font-bold">+911234567890</h3>
         </div>
 
-        <div class="foot_body flex gap-[30px]">
+        <div class="foot_body flex gap-[30px] flex-wrap px-[20px] md:px-0">
           {FootLinks.map((link, index) => {
             return (
               <article key={index} className="">

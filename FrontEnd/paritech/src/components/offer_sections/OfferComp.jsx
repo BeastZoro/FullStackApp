@@ -34,18 +34,14 @@ const OfferComp = () => {
 
   return (
     <section className=" my-[40px]">
-      {Window_w >= 768 ? (
-        <article className="flex items-center justify-center gap-[20px] ">
-          <OnSale title={"On sale"} images={on_sale_images} />
-          <OnSale title={"Best seller"} images={best_seller_images} />
-          <OnSale title={"Top viewed"} images={top_viewed_images} />
-        </article>
-      ) : (
+      {Window_w <= 768 ? 
+      
+      (
         <article className="flex items-center justify-center gap-[20px] px-[20px]">
           <Splide
             options={{
               rewind: true,
-              perPage: 2,
+              perPage: 1,
               gap: "15px",
               pagination: true,
               arrows: true,
@@ -63,6 +59,14 @@ const OfferComp = () => {
               <OnSale title={"Top viewed"} images={top_viewed_images} />{" "}
             </SplideSlide>
           </Splide>
+        </article>
+      ) :
+      
+      (
+        <article className="flex items-center justify-center gap-[20px] ">
+          <OnSale title={"On sale"} images={on_sale_images} />
+          <OnSale title={"Best seller"} images={best_seller_images} />
+          <OnSale title={"Top viewed"} images={top_viewed_images} />
         </article>
       )}
     </section>
