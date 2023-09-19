@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useContext, useState } from "react";
+import { CartContext, WishListContext } from "../../Context/Context";
 
-const Product = ({prod}) => {
+const Product = ({ prod }) => {
+  const { updateCart } = useContext(CartContext);
+  const {toggleWishList} = useContext(WishListContext)
+
   return (
-    <article
-      className="product-card max-h-[500px] relative shadow-md shadow-gray-500 cursor-pointer"
-    >
+    <article className="product-card max-h-[500px] relative shadow-md shadow-gray-500 cursor-pointer">
       <img
         className="w-full object-cover h-[80%]"
         src={prod.image}
@@ -16,12 +18,26 @@ const Product = ({prod}) => {
       </div>
 
       <div className="overlay text-white bg-gray-400 flex items-center justify-between px-[20px]">
-        <p className="uppercase text-sm lg:text-base font-medium">
+        <button
+          className="hidden md:block uppercase text-sm lg:text-base font-medium text-left"
+          onClick={() => updateCart(prod)}
+        >
           add to cart
-        </p>
+        </button>
+
+        <button
+          className="block md:hidden text-[1rem] lg:text-base font-medium text-left"
+          onClick={() => updateCart(prod)}
+        >
+          <i className="fa-solid fa-cart-shopping"></i>
+        </button>
+
         <div className="flex gap-[20px]">
           <p className="cursor-pointer ">
             <i className="fa-regular fa-eye"></i>
+          </p>
+          <p className="cursor-pointer" onClick={() => toggleWishList(prod)}>
+            <i className={`fa-solid fa-heart`}></i>
           </p>
           <p className="cursor-pointer">
             <i className="fa-solid fa-chart-simple"></i>

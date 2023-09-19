@@ -34,9 +34,8 @@ const OfferComp = () => {
 
   return (
     <section className=" my-[40px]">
-      {Window_w <= 768 ? 
-      
-      (
+      {Window_w <= 767 ? 
+        (
         <article className="flex items-center justify-center gap-[20px] px-[20px]">
           <Splide
             options={{
@@ -49,14 +48,14 @@ const OfferComp = () => {
             }}
           >
             <SplideSlide>
-              <OnSale title={"On sale"} images={on_sale_images} />{" "}
+              <OnSale title={"On sale"} images={on_sale_images} />
             </SplideSlide>
             <SplideSlide>
-              <OnSale title={"Best seller"} images={best_seller_images} />{" "}
+              <OnSale title={"Best seller"} images={best_seller_images} />
             </SplideSlide>
             <SplideSlide>
-              {" "}
-              <OnSale title={"Top viewed"} images={top_viewed_images} />{" "}
+  
+              <OnSale title={"Top viewed"} images={top_viewed_images} />
             </SplideSlide>
           </Splide>
         </article>

@@ -22,8 +22,8 @@ const Footer = () => {
   return (
     <footer className="bg-gray-900 text-white py-[30px]">
       <div className="foot_wrapper flex flex-wrap justify-around items-center">
-        <div class="foot_head my-[20px] px-[20px] md:px-0">
-          <div class="logo_wrapper w-[300px]">
+        <div className="foot_head my-[20px] px-[20px] md:px-0">
+          <div className="logo_wrapper w-[300px]">
             <img
               src={footLogo}
               alt="foot_logo"
@@ -39,7 +39,7 @@ const Footer = () => {
           <h3 className="text-[1.3rem] font-bold">+911234567890</h3>
         </div>
 
-        <div class="foot_body flex gap-[30px] flex-wrap px-[20px] md:px-0">
+        <div className="foot_body flex gap-[30px] flex-wrap px-[20px] md:px-0">
           {FootLinks.map((link, index) => {
             return (
               <article key={index} className="">
@@ -57,32 +57,32 @@ const Footer = () => {
               </article>
             );
           })}
-          <div class="get_touch">
-            <h3 class="title text-[1.3rem]">Get in touch</h3>
+          <div className="get_touch">
+            <h3 className="title text-[1.3rem]">Get in touch</h3>
             <p className="my-[10px] text-[.9rem]">
               No 342-London oxford street <br />
               012 united kingdom <br />
               [email protected] <br />
               +03212312412
             </p>
-            <p class="social flex gap-[20px] text-[1.1rem]">
-              <i class="cursor-pointer fa-brands fa-facebook"></i>
-              <i class="cursor-pointer fa-brands fa-twitter"></i>
-              <i class="cursor-pointer fa-brands fa-instagram"></i>
-              <i class="cursor-pointer fa-brands fa-discord"></i>
+            <p className="social flex gap-[20px] text-[1.1rem]">
+              <i className="cursor-pointer fa-brands fa-facebook"></i>
+              <i className="cursor-pointer fa-brands fa-twitter"></i>
+              <i className="cursor-pointer fa-brands fa-instagram"></i>
+              <i className="cursor-pointer fa-brands fa-discord"></i>
             </p>
           </div>
         </div>
       </div>
 
       <hr className="border border-white w-full my-[40px]" />
-      <div class="foot_tail flex flex-wrap gap-[20px] justify-around items-center my-[20px] text-[.9rem] px-[20px]">
+      <div className="foot_tail flex flex-wrap gap-[20px] justify-around items-center my-[20px] text-[.9rem] px-[20px]">
         <p>
           copyright A &copy; 2020 <a href="#" className="text-white capitalize font-semibold">wpthemegrid</a>-All rights
           reserved.
         </p>
 
-        <div class="foot_payment">
+        <div className="foot_payment">
           <img src={footPay}  alt="footPayment" className="h-[25px]"/>
         </div>
       </div>

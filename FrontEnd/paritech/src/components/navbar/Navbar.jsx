@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import NavHead from "./NavHead";
 import NavbarLinks from "./NavJson";
+import { CartContext } from "../../Context/Context";
 
 const Navbar = () => {
   const [ham_menu, setHamMenu] = useState(false);
@@ -40,9 +41,14 @@ const Navbar = () => {
             className="hamburger z-10 absolute top-[20%] right-0 md:hidden text-gray-600 text-[1.5rem] cursor-pointer px-[20px]"
             onClick={() => setHamMenu(!ham_menu)}
           >
-            <i className={`fa-solid ${ham_menu ? 'fa-xmark' : 'fa-bars'}`}></i>
+            <i className={`fa-solid ${ham_menu ? "fa-xmark" : "fa-bars"}`}></i>
           </p>
-          <div className={`nav_links absolute top-0 ${ham_menu ? 'right-[-10%]' : 'right-[-100%]'} duration-500 w-[70%] md:static md:w-full md:h-fit h-[100vh] bg-gray-200  md:bg-transparent`}>
+
+          <div
+            className={`nav_links absolute top-0 ${
+              ham_menu ? "right-[-10%]" : "right-[-100%]"
+            } duration-500 w-[70%] md:static md:w-full md:h-fit h-[100vh]  bg-gray-200  md:bg-transparent`}
+          >
             <ul className="flex-col md:h-[60px] md:flex md:flex-row md:items-center md:space-y-0 md:p-0 px-[50px] py-[100px] space-y-6 ">
               {NavbarLinks.nav_menu.map((ele, index) => {
                 return (
@@ -58,7 +64,7 @@ const Navbar = () => {
                     ></i>
 
                     {ele.drop_menu && (
-                      <ul className="max-w-[120px] z-[20] hidden group-hover:block absolute top-[100%] left-0 bg-[#eb1b3e] w-full">
+                      <ul className="max-w-[120px] z-[20] hidden group-hover:block absolute top-[100%] left-0 bg-[#eb1b3e] w-full text-white">
                         {ele.drop_menu.map((ele, index) => {
                           return (
                             <li key={index} className="p-2">
