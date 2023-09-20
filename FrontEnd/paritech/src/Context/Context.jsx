@@ -12,18 +12,21 @@ const Context = ({ children }) => {
   const [categories, setCategories] = useState([]);
   const [wishList, setWishList] = useState([]);
 
-  const checkIsWishList = (prod) => {
-    const findProd = wishList.findIndex((ele) => ele.id === prod.id);
-    // console.log(findProd, prod.id)
-    return findProd;
-  };
-
   const totalPrice = cart.reduce(
     (total, ele) => total + ele.product.price * ele.count,
     0
   );
-  
+
   const totalQuantity = cart.reduce((acc, ele) => acc + ele.count, 0);
+
+  const checkIsWishList = (prod) => {
+    const existing_product = wishList.find((ele) => ele.id === prod.id);
+    if (existing_product) {
+      return true;
+    } else {
+      return false;
+    }
+  };
 
   const updateProducts = (newProducts) => {
     setProducts(newProducts);
@@ -101,13 +104,13 @@ const Context = ({ children }) => {
   };
 
   const toggleWishList = (newProd) => {
-    checkIsWishList(newProd);
     const exists = wishList.find((ele) => ele.id === newProd.id);
     if (exists) {
       removeWishList(newProd);
     } else {
       updateWishList(newProd);
     }
+    // checkIsWishList(newProd);
   };
 
   const prod_data = {
@@ -135,6 +138,7 @@ const Context = ({ children }) => {
     toggleWishList,
     checkIsWishList,
   };
+
   return (
     <ProductContext.Provider value={prod_data}>
       <CartContext.Provider value={cart_data}>

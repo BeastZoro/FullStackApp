@@ -20,6 +20,13 @@ const ProductCard = ({ prod }) => {
   const { toggleWishList, checkIsWishList } = useContext(WishListContext);
   const { updateCart } = useContext(CartContext);
 
+  const [inWishList, setInWishList] = useState(checkIsWishList(prod))
+
+  const toggleWish = () =>{
+  toggleWishList(prod)
+  setInWishList((prev) => !prev)
+}
+
   return (
     <article className="max-w-fit relative">
       <img src={prod.image} alt={prod.name} />
@@ -28,8 +35,8 @@ const ProductCard = ({ prod }) => {
         <p>${prod.price}</p>
         <button onClick={() => updateCart(prod)}>Add to Cart</button>
       </div>
-      <p className="absolute top-[5%] right-[10%] cursor-pointer" onClick={() => toggleWishList(prod)}>
-        <i className={` text-[1.5rem] fa-solid fa-heart`}></i>
+      <p className="absolute top-[5%] right-[10%] cursor-pointer" onClick={() => toggleWish(prod)}>
+        <i className={`${inWishList && 'text-red-500'} text-[1.5rem] fa-solid fa-heart`}></i>
       </p>
     </article>
   );

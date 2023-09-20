@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { ProductContext } from "../../Context/Context";
 import Product from "./Product";
 import Loader from "../Loader";
+import { Link } from "react-router-dom";
 
 const Products = () => {
   const {
@@ -28,21 +29,25 @@ const Products = () => {
   };
 
   const fetchProducts = async () => {
+    try{
     const response = await fetch("http://127.0.0.1:8000/products/");
+    if(!response.ok){
+      throw new Error(`HTTP Error! status : ${response.status}`)
+    }
     const data = await response.json();
     updateProducts(data);
     updateAllProducts(data);
     updateLoading(false);
     const allCat = ["all", ...new Set(data.map((ele) => ele.categories))];
     updateCategories(allCat);
+    }
+    catch(error){
+      console.error("Error Fetching Products: ", error)
+    }
   };
 
   useEffect(() => {
-    try {
-      fetchProducts();
-    } catch (err) {
-      console.log(err);
-    }
+   fetchProducts()
   }, []);
 
   if (loading) {
@@ -77,7 +82,9 @@ const Products = () => {
 
         <div className="prod_grid px-[15px] grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-[20px]">
           {products.map((prod, index) => {
-            return <Product key={index} prod={prod} />;
+            return (
+              <Product key={index} prod={prod} />
+            );
           })}
         </div>
       </section>
@@ -86,3 +93,5 @@ const Products = () => {
 };
 
 export default Products;
+
+

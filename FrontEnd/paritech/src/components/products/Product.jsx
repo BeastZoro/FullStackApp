@@ -1,17 +1,26 @@
 import React, { useContext, useState } from "react";
 import { CartContext, WishListContext } from "../../Context/Context";
+import { Link } from "react-router-dom";
 
 const Product = ({ prod }) => {
   const { updateCart } = useContext(CartContext);
-  const {toggleWishList} = useContext(WishListContext)
+  const { toggleWishList, checkIsWishList } = useContext(WishListContext);
+  const [inWishList, setInWishList] = useState(checkIsWishList(prod));
+
+  const toggleWish = () => {
+    toggleWishList(prod);
+    setInWishList((prev) => !prev);
+  };
 
   return (
     <article className="product-card max-h-[500px] relative shadow-md shadow-gray-500 cursor-pointer">
-      <img
-        className="w-full object-cover h-[80%]"
-        src={prod.image}
-        alt={prod.name}
-      />
+      <Link to={`product/${prod.id}`}>
+        <img
+          className="w-full object-cover h-[80%]"
+          src={prod.image}
+          alt={prod.name}
+        />
+      </Link>
       <div className="flex flex-col justify-center md:gap-[3px] px-[15px] py-[10px]">
         <p className="font-medium">{prod.name}</p>
         <p>${prod.price}</p>
@@ -36,8 +45,10 @@ const Product = ({ prod }) => {
           <p className="cursor-pointer ">
             <i className="fa-regular fa-eye"></i>
           </p>
-          <p className="cursor-pointer" onClick={() => toggleWishList(prod)}>
-            <i className={`fa-solid fa-heart`}></i>
+          <p className="cursor-pointer" onClick={toggleWish}>
+            <i
+              className={`${inWishList && "text-red-500"} fa-solid fa-heart`}
+            ></i>
           </p>
           <p className="cursor-pointer">
             <i className="fa-solid fa-chart-simple"></i>
