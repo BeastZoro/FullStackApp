@@ -3,6 +3,7 @@ import { CartContext, WishListContext } from "../../Context/Context";
 import { Link } from "react-router-dom";
 
 const Product = ({ prod }) => {
+
   const { updateCart } = useContext(CartContext);
   const { toggleWishList, checkIsWishList } = useContext(WishListContext);
   const [inWishList, setInWishList] = useState(checkIsWishList(prod));
@@ -42,9 +43,11 @@ const Product = ({ prod }) => {
         </button>
 
         <div className="flex gap-[20px]">
-          <p className="cursor-pointer ">
-            <i className="fa-regular fa-eye"></i>
-          </p>
+          <Link to={`product/${prod.id}`}>
+            <p className="cursor-pointer ">
+              <i className="fa-regular fa-eye"></i>
+            </p>
+          </Link>
           <p className="cursor-pointer" onClick={toggleWish}>
             <i
               className={`${inWishList && "text-red-500"} fa-solid fa-heart`}

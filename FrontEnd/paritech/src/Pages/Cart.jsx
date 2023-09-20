@@ -72,7 +72,7 @@ const ShopCart = () => {
 
               <div className="cart_count flex items-center gap-[20px]">
                 <button
-                  onClick={() => decreaseCount(ele)}
+                  onClick={() => decreaseCount(ele.product)}
                   className="text-[1.5rem] bg-slate-200 px-[10px] rounded-lg"
                 >
                   -
@@ -141,7 +141,7 @@ const CheckOut = () => {
               <div className="prod_details flex gap-[20px] md:gap-[50px]">
                 <div className="cart_count flex items-center gap-[20px]">
                   <button
-                    onClick={() => decreaseCount(ele)}
+                    onClick={() => decreaseCount(ele.product)}
                     className="text-[1.5rem] bg-slate-200 px-[10px] rounded-lg"
                   >
                     -
@@ -155,7 +155,7 @@ const CheckOut = () => {
                   </button>
                 </div>
                 <p>${ele.product.price}</p>
-                <p onClick={() => removeFromCart(ele)}>
+                <p onClick={() => removeFromCart(ele.product)}>
                   <i className="fa-solid fa-trash text-red-500 cursor-pointer"></i>
                 </p>
               </div>

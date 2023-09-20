@@ -4,8 +4,10 @@ import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/react-splide/css";
 import Product from "../products/Product";
 import Loader from "../Loader";
+import { Link, useParams } from "react-router-dom";
 
 const HotItems = () => {
+  const { id } = useParams();
   const { allProducts, loading } = useContext(ProductContext);
 
   if (loading) {
@@ -35,7 +37,9 @@ const HotItems = () => {
           {allProducts.map((prod, index) => {
             return (
               <SplideSlide key={index}>
-                <Product prod={prod} />
+                <Link to={`product/${id}`}>
+                  <Product prod={prod} />
+                </Link>
               </SplideSlide>
             );
           })}

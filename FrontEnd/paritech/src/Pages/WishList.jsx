@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
 import { CartContext, WishListContext } from "../Context/Context";
+import { Link, useParams } from "react-router-dom";
 
 const WishList = () => {
   const { wishList } = useContext(WishListContext);
@@ -17,26 +18,35 @@ const WishList = () => {
 export default WishList;
 
 const ProductCard = ({ prod }) => {
+  const { id } = useParams();
   const { toggleWishList, checkIsWishList } = useContext(WishListContext);
   const { updateCart } = useContext(CartContext);
+  const [inWishList, setInWishList] = useState(checkIsWishList(prod));
 
-  const [inWishList, setInWishList] = useState(checkIsWishList(prod))
-
-  const toggleWish = () =>{
-  toggleWishList(prod)
-  setInWishList((prev) => !prev)
-}
+  const toggleWish = () => {
+    toggleWishList(prod);
+    setInWishList((prev) => !prev);
+  };
 
   return (
     <article className="max-w-fit relative">
-      <img src={prod.image} alt={prod.name} />
+      {/* <Link to={`product/${id}`}> */}
+        <img src={prod.image} alt={prod.name} />{" "}
+      {/* </Link> */}
       <div className="text-center text-[1.3rem] font-bold text-gray-500 bg-black py-[20px]">
         <p>{prod.name}</p>
         <p>${prod.price}</p>
         <button onClick={() => updateCart(prod)}>Add to Cart</button>
       </div>
-      <p className="absolute top-[5%] right-[10%] cursor-pointer" onClick={() => toggleWish(prod)}>
-        <i className={`${inWishList && 'text-red-500'} text-[1.5rem] fa-solid fa-heart`}></i>
+      <p
+        className="absolute top-[5%] right-[10%] cursor-pointer"
+        onClick={() => toggleWish(prod)}
+      >
+        <i
+          className={`${
+            inWishList && "text-red-500"
+          } text-[1.5rem] fa-solid fa-heart`}
+        ></i>
       </p>
     </article>
   );

@@ -93,3 +93,10 @@ body {
     transform: rotate(360deg);
   }
 }
+
+
+.selectedProd{
+  transform: scale(1.05);
+ transition: .4s ease;
+  border-radius: 8px;
+}

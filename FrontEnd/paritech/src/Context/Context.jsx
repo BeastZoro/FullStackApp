@@ -58,7 +58,7 @@ const Context = ({ children }) => {
   const removeFromCart = (remove_product) => {
     console.log(remove_product);
     const filtered_cart = cart.filter(
-      (ele) => ele.product.id !== remove_product.product.id
+      (ele) => ele.product.id !== remove_product.id
     );
     setCart(filtered_cart);
   };
@@ -67,7 +67,7 @@ const Context = ({ children }) => {
   const decreaseCount = (prod) => {
     const updated_cart = cart
       .map((ele) =>
-        ele.product.id === prod.product.id
+        ele.product.id === prod.id
           ? { ...ele, count: ele.count - 1 }
           : ele
       )
