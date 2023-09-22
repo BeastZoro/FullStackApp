@@ -7,25 +7,25 @@ const NavbarLinks = {
       },
       {
         name: 'product',
-        link: '#',
+        link: 'products',
       },
       {
         name: 'service',
-        link: '#',
+        link: 'services',
       },
       {
         name: 'shop',
         link: '#',
-        drop_menu: ['Link', 'Link', 'Link'],
+        drop_menu: ['Cart', 'products', 'wishlist'],
       },
       {
         name: 'pages',
         link: '#',
-        drop_menu: ['Link', 'Link', 'Link'],
+        drop_menu: ['login', 'register', 'contact'],
       },
       {
         name: 'contact us',
-        link: '#',
+        link: 'contact',
       },
     ],
     

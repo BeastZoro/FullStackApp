@@ -3,7 +3,6 @@ import { CartContext, WishListContext } from "../../Context/Context";
 import { Link } from "react-router-dom";
 
 const Product = ({ prod }) => {
-
   const { updateCart } = useContext(CartContext);
   const { toggleWishList, checkIsWishList } = useContext(WishListContext);
   const [inWishList, setInWishList] = useState(checkIsWishList(prod));
@@ -16,11 +15,10 @@ const Product = ({ prod }) => {
   return (
     <article className="product-card max-h-[500px] relative shadow-md shadow-gray-500 cursor-pointer">
       <Link to={`product/${prod.id}`}>
-        <img
-          className="w-full object-cover h-[80%]"
-          src={prod.image}
-          alt={prod.name}
-        />
+          <img
+            className="w-full object-cover h-[80%]"
+            src={prod.image}
+            alt={prod.name}/>
       </Link>
       <div className="flex flex-col justify-center md:gap-[3px] px-[15px] py-[10px]">
         <p className="font-medium">{prod.name}</p>

@@ -4,6 +4,14 @@ import { Link, useParams } from "react-router-dom";
 
 const WishList = () => {
   const { wishList } = useContext(WishListContext);
+
+  if(wishList.length <=0 ){
+    return(
+      <section className="text-center my-[30vh] text-[2rem] font-medium">
+        <h2>No Products added to Wishlist!</h2>
+      </section>
+    )
+  }
   return (
     <section className="min-h-[60vh] my-[30px]">
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-[20px] items-center justify-center">
@@ -17,7 +25,7 @@ const WishList = () => {
 
 export default WishList;
 
-const ProductCard = ({ prod }) => {
+export const ProductCard = ({ prod }) => {
   const { id } = useParams();
   const { toggleWishList, checkIsWishList } = useContext(WishListContext);
   const { updateCart } = useContext(CartContext);

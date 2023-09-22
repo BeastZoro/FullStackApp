@@ -7,6 +7,12 @@ import Home from "./Pages/Home";
 import Cart from "./Pages/Cart";
 import WishList from "./Pages/WishList";
 import ProductView from "./Pages/ProductView";
+import Products from "./Pages/Products";
+import Services from "./Pages/Services";
+import ContactUs from "./Pages/ContactUs";
+import Login from "./Pages/Login";
+import Location from "./Pages/Location";
+import Register from "./Pages/Register";
 
 function App() {
   return (
@@ -14,10 +20,16 @@ function App() {
       <Topbar />
       <Navbar />
       <Routes>
-        <Route path="/" element={<Home />}/>
+        <Route path="/" element={<Home />} />
         <Route path="cart" element={<Cart />} />
         <Route path="wishlist" element={<WishList />} />
         <Route path="/product/:id" element={<ProductView />} />
+        <Route path="products" element={<Products />} />
+        <Route path="services" element={<Services />} />
+        <Route path="contact" element={<ContactUs />} />
+        <Route path="login" element={<Login />} />
+        <Route path="register" element={<Register />} />
+        <Route path="location" element={<Location />} />
       </Routes>
       <Footer />
     </main>

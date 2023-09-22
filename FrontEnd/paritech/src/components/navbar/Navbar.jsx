@@ -2,10 +2,10 @@ import React, { useContext, useState } from "react";
 import NavHead from "./NavHead";
 import NavbarLinks from "./NavJson";
 import { CartContext } from "../../Context/Context";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [ham_menu, setHamMenu] = useState(false);
-
 
   return (
     <nav className="z-[100] relative">
@@ -52,29 +52,35 @@ const Navbar = () => {
             <ul className="flex-col md:h-[60px] md:flex md:flex-row md:items-center md:space-y-0 md:p-0 px-[50px] py-[100px] space-y-6 ">
               {NavbarLinks.nav_menu.map((ele, index) => {
                 return (
-                  <li
+                  <Link
+                    to={ele.link}
                     key={index}
-                    className="group relative capitalize h-full px-3 text-black md:text-white flex gap-[5px] items-center text-sm font-medium cursor-pointer md:hover:bg-[#eb1b3e]"
+                    className="h-full md:py-0 py-[20px]"
                   >
-                    <p>{ele.name}</p>
-                    <i
-                      className={`${
-                        ele.drop_menu && "fa-solid fa-chevron-down"
-                      } text-xs`}
-                    ></i>
+                    <li
+                      className="group relative capitalize h-full px-3 text-black md:text-white flex gap-[5px] items-center text-sm font-medium cursor-pointer md:hover:bg-[#eb1b3e]"
+                      onClick={() => setHamMenu(!ham_menu)}
+                    >
+                      <p>{ele.name}</p>
+                      <i
+                        className={`${
+                          ele.drop_menu && "fa-solid fa-chevron-down"
+                        } text-xs`}
+                      ></i>
 
-                    {ele.drop_menu && (
-                      <ul className="max-w-[120px] z-[20] hidden group-hover:block absolute top-[100%] left-0 bg-[#eb1b3e] w-full text-white">
-                        {ele.drop_menu.map((ele, index) => {
-                          return (
-                            <li key={index} className="p-2">
-                              {ele}
-                            </li>
-                          );
-                        })}
-                      </ul>
-                    )}
-                  </li>
+                      {ele.drop_menu && (
+                        <ul className="max-w-[120px] z-[20] hidden group-hover:block absolute top-[100%] left-0 bg-[#eb1b3e] w-full text-white">
+                          {ele.drop_menu.map((ele, index) => {
+                            return (
+                              <Link to={ele} key={index}>
+                                <li className="p-2">{ele}</li>
+                              </Link>
+                            );
+                          })}
+                        </ul>
+                      )}
+                    </li>
+                  </Link>
                 );
               })}
             </ul>

@@ -41,19 +41,18 @@ const ProductLeftView = ({ FilteredProd }) => {
 
   const totalQuantity = cart.find((ele) => ele.product.id === FilteredProd.id);
 
-  console.log(totalQuantity);
   const handleSelectedColor = (col) => {
     setColor(col);
   };
   const divs = [
     { id: 1, text: "Lorem", color: "red" },
-    { id: 2, text: "Lorem", color: "green" },
+    { id: 2, text: "Lorem", color: "pink" },
     { id: 3, text: "Lorem", color: "blue" },
     ,
   ];
 
   return (
-    <article className="max-w-[500px] w-full">
+    <article className="max-w-[600px] w-full px-[20px]">
       <h2 className="text-[1.7rem] font-semibold">{name}</h2>
       <div>
         <p>select your product:</p>
@@ -82,7 +81,7 @@ const ProductLeftView = ({ FilteredProd }) => {
               );
             })}
           </div>
-          <div className="my-[20px] px-[10px] flex flex-wrap gap-[20px] justify-between">
+          <div className="my-[20px] flex flex-wrap gap-[20px] justify-between">
             <div>
               <p className="capitalize">
                 select color : <span className="font-bold">{color} </span>
@@ -95,9 +94,7 @@ const ProductLeftView = ({ FilteredProd }) => {
                       className={`${
                         color === ele.color &&
                         "selectedProd shadow-md shadow-gray-500"
-                      } bg-${
-                        ele.color
-                      }-600 w-[20px] h-[20px] rounded-full cursor-pointer`}
+                      } bg-${ele.color}-600 w-[20px] h-[20px] rounded-full cursor-pointer`}
                       onClick={() => handleSelectedColor(ele.color)}
                     ></div>
                   );
@@ -106,7 +103,7 @@ const ProductLeftView = ({ FilteredProd }) => {
             </div>
 
             {/* cart buttons */}
-            <div className="flex gap-[10px] items-center">
+            <div className="flex gap-[10px] items-center my-[20px]">
               <button
                 className="max-h-[40px] text-[1.5rem] bg-slate-200 px-[10px] rounded-lg"
                 onClick={() => decreaseCount(FilteredProd)}
@@ -128,7 +125,7 @@ const ProductLeftView = ({ FilteredProd }) => {
               <select
                 name=""
                 id=""
-                className="py-[10px] px-[10px] bg-transparent border border-gray-500 rounded-sm"
+                className="py-[10px] px-[10px] bg-transparent rounded-sm"
               >
                 <option value="Select shipping country--">
                   --Select shipping country--
@@ -156,11 +153,11 @@ const ProductLeftView = ({ FilteredProd }) => {
                 className="text-white py-[6px] px-[8px] bg-blue-600 rounded-md uppercase"
                 onClick={() => updateCart(FilteredProd)}
               >
-                <i class="fa-solid fa-cart-shopping mx-[5px]"></i>add to cart
+                <i className="fa-solid fa-cart-shopping mx-[5px]"></i>add to cart
               </button>
 
               <button className="text-white py-[6px] px-[8px] bg-pink-600 rounded-md uppercase">
-                <i class="fa-solid fa-cart-shopping mx-[5px]"></i>buy now
+                <i className="fa-solid fa-cart-shopping mx-[5px]"></i>buy now
               </button>
             </div>
           </div>
@@ -187,7 +184,9 @@ const ProductRightView = () => {
           return (
             <p
               key={index}
-              className={`px-[30px] py-[20px] border max-w-fit cursor-pointer rounded-md ${selectedImg === ele && 'selectedProd shadow-md shadow-gray-500'}`}
+              className={`px-[30px] py-[20px] border max-w-fit cursor-pointer rounded-md ${
+                selectedImg === ele && "selectedProd shadow-md shadow-gray-500"
+              }`}
               onClick={() => selectedImage(ele)}
             >
               {ele}

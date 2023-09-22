@@ -37,9 +37,7 @@ const HotItems = () => {
           {allProducts.map((prod, index) => {
             return (
               <SplideSlide key={index}>
-                <Link to={`product/${id}`}>
-                  <Product prod={prod} />
-                </Link>
+                <Product key={index} prod={prod} />
               </SplideSlide>
             );
           })}
