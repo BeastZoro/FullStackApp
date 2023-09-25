@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Button } from "../components/Buttons/Button";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   const [passType, setPassType] = useState(true);
@@ -47,6 +48,7 @@ const Login = () => {
                 <i className="fa-solid fa-envelope"></i>
               </label>
               <input
+                required
                 type="email"
                 id="email"
                 name="email"
@@ -67,6 +69,7 @@ const Login = () => {
                 <i className="fa-solid fa-lock"></i>
               </label>
               <input
+                required
                 type={`${passType ? "password" : "text"}`}
                 id="password"
                 name="password"
@@ -89,9 +92,16 @@ const Login = () => {
               <label htmlFor="remember">remember me</label>
             </div>
 
-            <Button value={'signin'} />
+            <Button value={"signin"} />
 
-            <p className="my-[10px]">Don't have an account ?  <span className="font-bold text-blue-600">SIGN UP</span></p>
+            <p className="my-[10px]">
+              Don't have an account ?
+              <Link to={"/register"}>
+                <span className="font-bold text-blue-600 cursor-pointer">
+                  SIGN IN
+                </span>
+              </Link>
+            </p>
           </div>
         </form>
       </div>

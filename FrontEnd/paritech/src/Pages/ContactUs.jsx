@@ -33,6 +33,7 @@ const ContactUs = () => {
               <i className="fa-solid fa-user"></i>
             </label>
             <input
+              required
               type="text"
               id="name"
               name="name"
@@ -53,6 +54,7 @@ const ContactUs = () => {
               <i class="fa-solid fa-envelope"></i>
             </label>
             <input
+              required
               type="email"
               id="email"
               name="email"
@@ -73,6 +75,7 @@ const ContactUs = () => {
               <i class="fa-solid fa-grip-lines"></i>
             </label>
             <input
+              required
               type="text"
               id="subject"
               name="subject"
@@ -93,6 +96,7 @@ const ContactUs = () => {
               <i class="fa-solid fa-message"></i>
             </label>
             <textarea
+              required
               type="text"
               id="subject"
               name="message"

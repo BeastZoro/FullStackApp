@@ -16,7 +16,7 @@ const NavbarLinks = {
       {
         name: 'shop',
         link: '#',
-        drop_menu: ['Cart', 'products', 'wishlist'],
+        drop_menu: ['cart', 'products', 'wishlist'],
       },
       {
         name: 'pages',

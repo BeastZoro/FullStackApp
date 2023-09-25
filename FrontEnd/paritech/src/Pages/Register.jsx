@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Button } from "../components/Buttons/Button";
+import { Link } from "react-router-dom";
 
 const Register = () => {
   const [passType, setPassType] = useState(true);
@@ -47,6 +48,7 @@ const Register = () => {
                 <i className="fa-solid fa-user"></i>
               </label>
               <input
+                required
                 type="text"
                 id="name"
                 name="name"
@@ -67,6 +69,7 @@ const Register = () => {
                 <i className="fa-solid fa-envelope"></i>
               </label>
               <input
+                required
                 type="email"
                 id="email"
                 name="email"
@@ -86,6 +89,7 @@ const Register = () => {
                 <i className="fa-solid fa-lock"></i>
               </label>
               <input
+                required
                 type={`${passType ? "password" : "text"}`}
                 id="password"
                 name="password"
@@ -104,15 +108,19 @@ const Register = () => {
             </div>
 
             <div className="remember_me flex gap-[20px] capitalize font-medium">
-              <input type="checkbox" name="" id="remember" />
+              <input type="checkbox" name="" id="remember" required/>
               <label htmlFor="remember">I accept the terms of use</label>
             </div>
 
             <Button value={"signup"} />
 
             <p className="my-[10px]">
-              Already have an account ?{" "}
-              <span className="font-bold text-blue-600">SIGN IN</span>
+              Already have an account ?
+              <Link to={"/login"}>
+                <span className="font-bold text-blue-600 cursor-pointer">
+                  SIGN IN
+                </span>
+              </Link>
             </p>
           </div>
         </form>

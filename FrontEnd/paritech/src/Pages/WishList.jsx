@@ -23,6 +23,7 @@ const WishList = () => {
   );
 };
 
+
 export default WishList;
 
 export const ProductCard = ({ prod }) => {
@@ -38,9 +39,9 @@ export const ProductCard = ({ prod }) => {
 
   return (
     <article className="max-w-fit relative">
-      {/* <Link to={`product/${id}`}> */}
+      <Link to={`/product/${prod.id}`}>
         <img src={prod.image} alt={prod.name} />{" "}
-      {/* </Link> */}
+      </Link>
       <div className="text-center text-[1.3rem] font-bold text-gray-500 bg-black py-[20px]">
         <p>{prod.name}</p>
         <p>${prod.price}</p>
