@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Button } from "../components/Buttons/Button";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Register = () => {
   const [passType, setPassType] = useState(true);
@@ -10,10 +11,32 @@ const Register = () => {
     name: "",
   });
 
+  const navigate = useNavigate();
+
   const handleChange = (e) => {
     const { value, name } = e.target;
     setInputs({ ...Inputs, [name]: value });
   };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const response = await fetch("http://localhost:8000/api/register", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        name: Inputs.name,
+        email: Inputs.email,
+        password: Inputs.password,
+      }),
+    });
+
+    navigate("/login");
+
+    const content = await response.json();
+    console.log(content);
+  };
+
   return (
     <section className="my-[40px]">
       <div className="login_wrap max-w-[400px] mx-auto shadow-md shadow-gray-500 py-[30px] px-[20px]">
@@ -38,7 +61,7 @@ const Register = () => {
 
         <p className="text-center">or Login with with email</p>
 
-        <form action="" onSubmit={(e) => e.preventDefault()}>
+        <form action="" onSubmit={handleSubmit}>
           <div className="text-gray-500 flex flex-col gap-[10px] my-[20px]">
             <label htmlFor="name" className="text-sm mx-[10px]">
               Full Name
@@ -108,7 +131,7 @@ const Register = () => {
             </div>
 
             <div className="remember_me flex gap-[20px] capitalize font-medium">
-              <input type="checkbox" name="" id="remember" required/>
+              <input type="checkbox" name="" id="remember" required />
               <label htmlFor="remember">I accept the terms of use</label>
             </div>
 

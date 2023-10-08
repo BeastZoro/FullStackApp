@@ -1,6 +1,10 @@
 import React, { useContext } from "react";
 import logo from "../../assets/Images/logo/logo.png";
-import { CartContext, ProductContext, WishListContext } from "../../Context/Context";
+import {
+  CartContext,
+  ProductContext,
+  WishListContext,
+} from "../../Context/Context";
 import { Link } from "react-router-dom";
 import { Badge } from "@mui/material";
 
@@ -12,7 +16,7 @@ const NavHead = () => {
   const { wishList } = useContext(WishListContext);
 
   const totalQuantity = cart.reduce((acc, ele) => acc + ele.count, 0);
-  const totalWishItems = wishList.length
+  const totalWishItems = wishList.length;
 
   const handleCategory = (cate) => {
     console.log(cate);
@@ -68,9 +72,11 @@ const NavHead = () => {
             <i className="text-[1.2rem]  fa-regular fa-heart"></i>
           </Badge>
         </Link>
-        <p className="cursor-pointer">
-          <i className="text-[1.2rem]  fa-regular fa-user"></i>
-        </p>
+        <Link to="/dashboard">
+          <p className="cursor-pointer">
+            <i className="text-[1.2rem]  fa-regular fa-user"></i>
+          </p>
+        </Link>
         <Link to="cart">
           <Badge color="secondary" badgeContent={totalQuantity} showZero>
             <i className="text-[1.2rem] fa-solid fa-bag-shopping"></i>

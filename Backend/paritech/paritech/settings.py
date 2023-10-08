@@ -80,8 +80,15 @@ WSGI_APPLICATION = 'paritech.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        # 'ENGINE': 'django.db.backends.sqlite3',
+        # 'NAME': BASE_DIR / 'db.sqlite3',
+
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'paritech',
+        'USER' : 'root',
+        'PASSWORD' : 'Shadow1',
+        'HOST' : 'localhost',
+        'PORT' : '3306'
     }
 }
 
@@ -123,22 +130,26 @@ USE_TZ = True
 STATIC_URL = 'static/'
 
 # REST API PERMISSION
-REST_FRAMEWORK = {
-    'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.AllowAny',
-    ]
-}
+# REST_FRAMEWORK = {
+#     'DEFAULT_PERMISSION_CLASSES': [
+#         'rest_framework.permissions.AllowAny',
+#     ]
+# }
 
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",
-    'http://localhost:5173'
-]
+# CORS_ALLOWED_ORIGINS = [
+#     "http://localhost:3000",
+#     'http://localhost:5173'
+# ]
 
+CORS_ORIGIN_ALLOW_ALL = True #allow all front end ports to access 
+CORS_ALLOW_CREDENTIALS = True #allow front end to access the cookies
 # Media files
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
+# User models
+AUTH_USER_MODEL = 'paritechapi.User'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field

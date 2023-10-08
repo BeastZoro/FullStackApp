@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Button } from "../components/Buttons/Button";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [passType, setPassType] = useState(true);
@@ -9,10 +10,27 @@ const Login = () => {
     email: "",
   });
 
+  const navigate = useNavigate()
+
   const handleChange = (e) => {
     const { value, name } = e.target;
     setInputs({ ...Inputs, [name]: value });
   };
+
+  const handleSubmit = async (e) =>{
+     e.preventDefault();
+    const response = await fetch('http://localhost:8000/api/login', {
+      method : 'POST',
+      headers : {'Content-Type' : 'application/json'},
+      credentials : 'include',
+      body :JSON.stringify({
+        email : Inputs.email,
+        password : Inputs.password
+      })
+    })
+
+    navigate('/dashboard')
+  }
 
   return (
     <section className="my-[40px]">
@@ -38,7 +56,7 @@ const Login = () => {
 
         <p className="text-center">or Login with with email</p>
 
-        <form action="" onSubmit={(e) => e.preventDefault()}>
+        <form action="" onSubmit={handleSubmit}>
           <div className="text-gray-500 flex flex-col gap-[10px] my-[20px]">
             <label htmlFor="email" className="text-sm mx-[20px]">
               Email Address

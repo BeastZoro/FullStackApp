@@ -6,7 +6,7 @@ const Topbar = () => {
     {
       icon: "fa-solid fa-location-dot",
       value: "Store Location",
-      link: "location",
+      link: "/location",
     },
     {
       icon: "fa-regular fa-bell",
@@ -16,12 +16,12 @@ const Topbar = () => {
     {
       icon: "fa-solid fa-user",
       value: "My account",
-      link: "",
+      link: "/dashboard",
     },
     {
       icon: "fa-solid fa-power-off",
       value: "Login",
-      link: "login",
+      link: "/login",
     },
   ];
 

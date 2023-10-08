@@ -13,6 +13,7 @@ import ContactUs from "./Pages/ContactUs";
 import Login from "./Pages/Login";
 import Location from "./Pages/Location";
 import Register from "./Pages/Register";
+import Dashboard from "./Pages/Dashboard";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
         <Route path="login" element={<Login />} />
         <Route path="register" element={<Register />} />
         <Route path="location" element={<Location />} />
+        <Route path="dashboard" element={<Dashboard />} />
       </Routes>
       <Footer />
     </main>
